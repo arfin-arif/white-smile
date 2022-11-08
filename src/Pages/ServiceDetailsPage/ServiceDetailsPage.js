@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { FaCreditCard, FaRegStar } from 'react-icons/fa';
 import './ServiceDetailsPage.css'
 
@@ -18,7 +18,7 @@ const ServiceDetailsPage = () => {
                     <p className="py-3 text-xl">
                         {details}
                     </p>
-                    <div className='flex  justify-between'>
+                    <div className='flex  justify-between mt-5'>
                         <div className='ratings'>
                             <FaRegStar className='text-2xl  text-yellow-300'></FaRegStar>
                             <p className='text-2xl pl-2'>{ratings}</p>
@@ -27,6 +27,10 @@ const ServiceDetailsPage = () => {
                             <FaCreditCard className='text-2xl text-blue-400 absolute flex right-20 top-1/4 '></FaCreditCard>
                             <p className='text-2xl pl-2'>{payment_options}</p>
                         </div>
+                    </div>
+                    <div className='mt-10 flex justify-between'>
+                        <h5 className='text-2xl font-bold'>$ {price}</h5>
+                        <Link className='btn btn-outline btn-info'>Appointment</Link>
                     </div>
 
 
