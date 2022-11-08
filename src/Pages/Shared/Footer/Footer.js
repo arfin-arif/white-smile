@@ -4,7 +4,7 @@ import logo from '../../../assets/logo.png'
 
 const Footer = () => {
     return (
-        <footer className="footer bg-cyan-50 p-10 bg-base-200 text-base-content">
+        <footer className="footer bg-cyan-50 p-10  text-base-content">
             <div>
                 <img src={logo} alt="" />
 

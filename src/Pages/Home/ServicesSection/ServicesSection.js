@@ -13,7 +13,7 @@ const ServicesSection = ({ service }) => {
                     <p>{details.slice(0, 100)}....</p>
                     <div className="card-actions justify-between">
                         <h3 className='text-3xl text-cyan-200'>${price}</h3>
-                        <button className="btn btn-info">Read More</button>
+                        <Link to={`/services/${_id}`} className="btn btn-info">Read More</Link>
                     </div>
                 </div>
             </div>

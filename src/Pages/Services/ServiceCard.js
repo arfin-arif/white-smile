@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaRegStar } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 
 const ServiceCard = ({ service }) => {
@@ -22,7 +23,7 @@ const ServiceCard = ({ service }) => {
                         </div>
 
                     </div>
-                    <button className="btn btn-info">Read More!</button>
+                    <Link to={`/services/${_id}`} className="btn btn-info">Read More!</Link>
                 </div>
             </div>
         </div>

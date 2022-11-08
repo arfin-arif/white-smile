@@ -4,7 +4,7 @@ import './OurMessage.css'
 
 const OurMessage = () => {
     return (
-        <div className="hero my-20">
+        <div className="hero rounded my-20 bg-cyan-50">
             <div className="hero-content flex-col lg:flex-row">
 
                 <div className='circle-image w-3/5'>
@@ -13,7 +13,7 @@ const OurMessage = () => {
 
                 <div className='w-1/2'>
                     <br />
-                    <h6 className='text-2xl my-5 text-cyan-200 font-bold'>WELCOME TO WHITE SMILE</h6>
+                    <h6 className='text-2xl my-5 text-cyan-300 font-bold'>WELCOME TO WHITE SMILE</h6>
 
                     <p className="py-3 text-xl">
                         I Create Beautiful Smiles!
