@@ -1,6 +1,11 @@
+import { data } from 'autoprefixer';
 import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddService = () => {
+
     const handleReviewSubmit = event => {
         event.preventDefault();
         const form = event.target;
@@ -31,12 +36,15 @@ const AddService = () => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
+                    toast.success('service added successfully ')
                     form.reset();
                 }
             })
             .catch(error => console.log(error))
 
     }
+
+
 
 
     return (
@@ -52,7 +60,10 @@ const AddService = () => {
                     <textarea required name='details' className="textarea textarea-bordered" placeholder="Details"></textarea>
                 </div>
 
-                <input className='btn btn-info' type="submit" value="Add Service" />
+                <div>
+                    <input className='btn btn-info' type="submit" value="Add Service" />
+                    <ToastContainer></ToastContainer>
+                </div>
             </form>
 
         </div>
