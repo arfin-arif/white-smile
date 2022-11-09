@@ -2,10 +2,14 @@ import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { FaCreditCard, FaRegStar } from 'react-icons/fa';
 import './ServiceDetailsPage.css'
+import useTitle from '../../hooks/useTitle';
 
 const ServiceDetailsPage = () => {
     const service = useLoaderData();
     const { title, image, price, _id, details, ratings, payment_options, } = service;
+
+    // to use title
+    useTitle(`${title}`)
     return (
         <div className="hero rounded my-20">
             <div className="hero-content flex-col lg:flex-row">

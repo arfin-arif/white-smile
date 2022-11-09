@@ -1,65 +1,32 @@
-import { getAuth, GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaGoogle } from 'react-icons/fa';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 
 
+const Register = () => {
+    const { createUserWithEAndP } = useContext(AuthContext)
 
 
-const Login = () => {
-    const [error, setError] = useState('');
-    const [user, setUser] = useState();
-    const navigate = useNavigate();
-    const location = useLocation();
 
-    const from = location.state?.from?.pathname || '/';
-
-    const { signIn, loginProvider } = useContext(AuthContext)
-    const googleProvider = new GoogleAuthProvider();
-
-    // to use title
-    useTitle('Login')
-    // email
-    const handleSubmit = event => {
+    const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
+        const name = form.name.value
+        const photoURL = form.photo.value
         const email = form.email.value
         const password = form.password.value
-
-        signIn(email, password)
-            .then(result => {
-                const user = result.user
-                console.log(user)
-                form.reset()
-                setError('')
-                navigate(from, { replace: true })
-            })
-            .catch(error => {
-                console.log(error)
-                setError(error.message)
-            })
-    }
-
-
-
-    // sign in with google
-    const handleGoogleSigIn = () => {
-        loginProvider(googleProvider)
+        console.log(name, email)
+        createUserWithEAndP(email, password)
             .then(result => {
                 const user = result.user;
-                setUser(user)
                 console.log(user)
-                setError('')
-                navigate(from, { replace: true })
+            })
+            .catch(error => console.log(error))
 
-            })
-            .catch(error => {
-                console.log(error)
-                setError(error.message)
-            })
-    }
+    };
+    // / to use title
+    useTitle('Register')
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">
@@ -68,8 +35,21 @@ const Login = () => {
                     <p className="py-6">We Will Provide you health tips and technique to keep your teeth healthy</p>
                 </div>
                 <div className="card flex-shrink-0 w-1/2  shadow-2xl bg-base-100">
+
                     <form onSubmit={handleSubmit} className="card-body">
                         <h1 className="text-5xl text-center font-bold">Login now!</h1>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Name</span>
+                            </label>
+                            <input type="text" name='name' placeholder="name" className="input input-bordered" />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Photo Url</span>
+                            </label>
+                            <input type="text" name='photo' placeholder="URL" className="input input-bordered" />
+                        </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -81,20 +61,13 @@ const Login = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name='password' placeholder="password" className="input input-bordered" />
-                            <label className="label">
-                                <Link href="#" className="label-text-alt link link-hover">Forgot password?</Link>
-                            </label>
                         </div>
                         <div className="form-control mt-6">
-                            <p className='text-red-600 mb-4'>{error?.slice(10,)}</p>
                             <button className="btn btn-info">Login</button>
                         </div>
                         <div className='text-center'>
-                            <p>New to White Smile <Link to='/register' className='text-blue-400'>Register</Link> </p>
-                            <hr />
-                            OR
-                            <p className='text-2xl'>Log In Using</p>
-                            <FaGoogle onClick={handleGoogleSigIn} className='text-4xl'></FaGoogle>
+                            <p className=''>Already Have Account <Link className='text-blue-400' to='/login'>Login</Link></p>
+
                         </div>
 
                     </form>
@@ -104,4 +77,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
