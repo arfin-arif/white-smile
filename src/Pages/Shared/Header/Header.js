@@ -61,7 +61,7 @@ const Header = () => {
                         {
                             user?.email ?
                                 <>
-                                    <li ><NavLink to='/'>My Review</NavLink></li>
+                                    <li ><NavLink to='/reviews/my-reviews'>My Review</NavLink></li>
                                     <li ><NavLink to='/services/add' >Add Service</NavLink></li>
                                     <li onClick={handleLogOut}><NavLink>Logout</NavLink></li>
 

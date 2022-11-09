@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import ReviewCard from './ReviewCard/ReviewCard';
 
 const MyReviews = () => {
     const { user } = useContext(AuthContext)
@@ -16,9 +17,10 @@ const MyReviews = () => {
     }, [user?.email])
 
     return (
-        <div>
+        <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3  mb-5'>
             {
-                reviews.map(review => <li>{review.message}</li>)
+                reviews.map(review => <ReviewCard key={review._id}
+                    review={review}></ReviewCard>)
             }
         </div>
     );
