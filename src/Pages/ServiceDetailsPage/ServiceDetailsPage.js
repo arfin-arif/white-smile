@@ -4,11 +4,12 @@ import { FaCreditCard, FaRegStar } from 'react-icons/fa';
 import './ServiceDetailsPage.css'
 import useTitle from '../../hooks/useTitle';
 import ReviewSection from './ReviewSection/ReviewSection';
+import { useImageViewer } from "react-image-viewer-hook";
 
 const ServiceDetailsPage = () => {
     const service = useLoaderData();
     const { title, image, price, _id, details, ratings, payment_options, } = service;
-
+    const { getOnClick, ImageViewer } = useImageViewer()
     // to use title
     useTitle(`${title}`)
     return (
@@ -18,7 +19,7 @@ const ServiceDetailsPage = () => {
                 <div className="hero-content flex-col lg:flex-row">
 
                     <div className=' w-3/5'>
-                        <img src={image} alt="" className='rounded-lg w-3/4 h-full shadow-2xl ' />
+                        <img src={image} onClick={getOnClick(image)} alt="" className='rounded-lg w-3/4 h-full shadow-2xl ' />
                     </div>
                     <div className='w-1/2'>
                         <h6 className='text-3xl my-5 text-cyan-300 font-bold'>{title}</h6>
@@ -43,6 +44,7 @@ const ServiceDetailsPage = () => {
 
                     </div>
                 </div>
+                <ImageViewer />
             </div>
             <div className=''>
                 <ReviewSection
