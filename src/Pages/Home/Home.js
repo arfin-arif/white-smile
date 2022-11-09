@@ -3,6 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import OurMessage from './OurMessage/OurMessage';
 import ServicesSection from './ServicesSection/ServicesSection';
 import Slider from './Slider/Slider';
+import WhyMe from './WhyMe/WhyMe';
 
 const Home = () => {
     const services = useLoaderData();
@@ -21,7 +22,7 @@ const Home = () => {
             <div className='text-center mb-6'>
                 <Link to='/services' className='btn btn-outline  btn-info'>See All Services</Link>
             </div>
-
+            <WhyMe></WhyMe>
         </div>
     );
 };
