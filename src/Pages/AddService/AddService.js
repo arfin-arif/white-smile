@@ -1,7 +1,6 @@
 import { data } from 'autoprefixer';
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-
 import 'react-toastify/dist/ReactToastify.css';
 
 const AddService = () => {
@@ -36,7 +35,7 @@ const AddService = () => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
-                    toast.success('service added successfully ')
+                    toast.success('Service added successfully ')
                     form.reset();
                 }
             })

@@ -19,7 +19,7 @@ const Header = () => {
                 <NavLink to='/' className="hidden  lg:flex ">
                     <img src={logo} className='h-20' alt="" />
                 </NavLink>
-                <NavLink className="btn btn-ghost normal-case text-xl">White Smile</NavLink>
+                <NavLink to='/' className="btn btn-ghost normal-case text-xl">White Smile</NavLink>
             </div>
             <div className="flex-none">
                 <div className='hidden mr-3 lg:flex'>

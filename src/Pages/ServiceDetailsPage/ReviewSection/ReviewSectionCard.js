@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { FaRegStar, FaUser } from 'react-icons/fa';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import noImage from "../../../assets/no-image.png";
 
 const ReviewSectionCard = ({ review }) => {
     const { user } = useContext(AuthContext)
-    const { serviceName, userName, ratings, message } = review
+    const { serviceName, userName, ratings, message, userProfile } = review
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
             <div className="card-body">
@@ -17,10 +18,20 @@ const ReviewSectionCard = ({ review }) => {
                         <FaRegStar className='text-2xl text-yellow-300'></FaRegStar>
                         <p className='pl-2 text-xl'>{ratings}</p>
                     </div>
-                    <div className='flex'>
-                        <FaUser className='text-2xl' ></FaUser>
+                    <div className=''>
+                        {
+                            review?.userProfile ?
+                                <>
 
-                        <p className='pl-1 text-xl'>{userName}</p>
+                                    <img className='rounded-full h-20' src={userProfile} alt="" />
+                                </>
+                                :
+                                <>
+                                    <img className=' rounded-full h-20' src={noImage} alt="" />
+
+
+                                </>
+                        }
                     </div>
                 </div>
             </div>
