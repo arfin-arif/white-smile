@@ -4,10 +4,11 @@ import OurMessage from './OurMessage/OurMessage';
 import ServicesSection from './ServicesSection/ServicesSection';
 import Slider from './Slider/Slider';
 import WhyMe from './WhyMe/WhyMe';
+import useTitle from '../../hooks/useTitle';
 
 const Home = () => {
     const services = useLoaderData();
-
+    useTitle('Home')
     return (
         <div>
             <Slider></Slider>

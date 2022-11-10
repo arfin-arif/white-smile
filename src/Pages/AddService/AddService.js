@@ -2,6 +2,7 @@ import { data } from 'autoprefixer';
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useTitle from '../../hooks/useTitle';
 
 const AddService = () => {
 
@@ -44,11 +45,11 @@ const AddService = () => {
     }
 
 
-
+    useTitle('Add Services')
 
     return (
         <div>
-            <h3 className='text-3xl'>Please Submit Your  </h3>
+            <h3 className='text-3xl text-center mb-2'>Please Add Your Service  </h3>
             <form onSubmit={handleReviewSubmit}>
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-3'>
                     <input required type="text" name='title' placeholder="Title" className="input input-bordered input-info w-full " />
@@ -59,8 +60,8 @@ const AddService = () => {
                     <textarea required name='details' className="textarea textarea-bordered" placeholder="Details"></textarea>
                 </div>
 
-                <div>
-                    <input className='btn btn-info' type="submit" value="Add Service" />
+                <div className='text-center mt-5 mb-2'>
+                    <input className='btn btn-info ' type="submit" value="Add Service" />
                     <ToastContainer></ToastContainer>
                 </div>
             </form>

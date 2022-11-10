@@ -1,12 +1,15 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 
 
 const Register = () => {
-    const { createUserWithEAndP } = useContext(AuthContext)
-
+    const [error, setError] = useState('');
+    const { createUserWithEAndP, updateUserProfile } = useContext(AuthContext)
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
 
     const handleSubmit = (event) => {
@@ -21,10 +24,28 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                setError('');
+                form.reset();
+                handleUserProfile(name, photoURL);
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                setError(error.message)
+            })
 
     };
+
+    const handleUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch((error) => { console.log(error) })
+    }
+
+
+
     // / to use title
     useTitle('Register')
     return (
@@ -37,7 +58,7 @@ const Register = () => {
                 <div className="card flex-shrink-0 w-1/2  shadow-2xl bg-base-100">
 
                     <form onSubmit={handleSubmit} className="card-body">
-                        <h1 className="text-5xl text-center font-bold">Login now!</h1>
+                        <h1 className="text-5xl text-center font-bold">Register now!</h1>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Name</span>
@@ -63,7 +84,8 @@ const Register = () => {
                             <input type="password" name='password' placeholder="password" className="input input-bordered" />
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-info">Login</button>
+                            <p className='text-red-600 mb-4'>{error?.slice(10,)}</p>
+                            <button className="btn btn-info">Register</button>
                         </div>
                         <div className='text-center'>
                             <p className=''>Already Have Account <Link className='text-blue-400' to='/login'>Login</Link></p>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaEdit, FaRegStar, FaRegTrashAlt, FaUser } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const ReviewCard = ({ review, handleDelete }) => {
     const { serviceName, userName, ratings, message, _id } = review
@@ -21,7 +22,10 @@ const ReviewCard = ({ review, handleDelete }) => {
                     </div>
                 </div>
                 <div className='flex justify-between'>
-                    <FaEdit className='text-xl mt-4'></FaEdit>
+                    <Link to={`/update-review/${_id}`}>
+
+                        <FaEdit className='text-xl mt-4'></FaEdit>
+                    </Link>
                     <FaRegTrashAlt onClick={() => handleDelete(_id)} className='text-xl mt-4'></FaRegTrashAlt>
 
                 </div>

@@ -31,10 +31,32 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user
-                console.log(user)
-                form.reset()
-                setError('')
-                navigate(from, { replace: true })
+                const currentUser = {
+                    email: user.email
+                }
+                console.log(currentUser)
+                //  JWT token 
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+
+                        //to store JWT token in Local Storage 
+                        localStorage.setItem('token', data.token);
+                        // form.reset()
+                        // setError('')
+                        navigate(from, { replace: true })
+                    })
+
+
+
+
             })
             .catch(error => {
                 console.log(error)
