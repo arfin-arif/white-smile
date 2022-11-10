@@ -49,8 +49,8 @@ const Login = () => {
 
                         //to store JWT token in Local Storage 
                         localStorage.setItem('token', data.token);
-                        // form.reset()
-                        // setError('')
+                        form.reset()
+                        setError('')
                         navigate(from, { replace: true })
                     })
 
@@ -71,10 +71,26 @@ const Login = () => {
         loginProvider(googleProvider)
             .then(result => {
                 const user = result.user;
-                setUser(user)
-                console.log(user)
-                setError('')
-                navigate(from, { replace: true })
+                const currentUser = {
+                    email: user.email
+                }
+                console.log(currentUser)
+                //  JWT token 
+                fetch('https://white-smile-server.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        //to store JWT token in Local Storage 
+                        localStorage.setItem('token', data.token);
+                        setError('')
+                        navigate(from, { replace: true })
+                    })
 
             })
             .catch(error => {
