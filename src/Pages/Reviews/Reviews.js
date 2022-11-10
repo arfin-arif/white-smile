@@ -6,6 +6,7 @@ const Reviews = () => {
     const service = useLoaderData()
     const { title, image, price, _id, details, ratings, payment_options, } = service;
     const { user } = useContext(AuthContext)
+    const { photoURL } = user;
 
     const handleReviewSubmit = event => {
         event.preventDefault();
@@ -19,6 +20,7 @@ const Reviews = () => {
             review_serviceId: _id,
             serviceName: title,
             userName: name,
+            userProfile: photoURL,
             email,
             ratings,
             message
@@ -36,6 +38,7 @@ const Reviews = () => {
                 console.log(data)
                 if (data.acknowledged) {
                     form.reset();
+                    alert('Review Submitted Successfully')
                 }
             })
             .catch(error => console.log(error))

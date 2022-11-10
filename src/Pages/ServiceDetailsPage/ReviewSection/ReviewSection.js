@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import ReviewCard from '../../MyReviews/ReviewCard/ReviewCard';
 import ReviewSectionCard from './ReviewSectionCard';
 
 const ReviewSection = ({ service }) => {
     const [reviews, setReviews] = useState([])
     const { title, image, price, _id, details, ratings, payment_options, } = service;
-
+    const { user } = useContext(AuthContext);
     useEffect(() => {
         fetch(`http://localhost:5000/service-review?serviceName=${title}`)
             .then(res => res.json())
@@ -30,8 +31,19 @@ const ReviewSection = ({ service }) => {
             </div>
 
 
-            <div className='text-center'>
-                <Link to={`/reviews/${_id}`} className='btn mt-8 mb-2 btn-outline btn-info'>Add Your Review</Link>
+            <div className='text-center mb-3'>
+                {
+                    user?.uid ?
+                        <>
+                            <Link to={`/reviews/${_id}`} className='btn mt-8 mb-2 btn-outline btn-info'>Add Your Review</Link>
+
+                        </>
+                        :
+                        <>
+                            <Link to={`/login`} className='btn mt-8 mb-2 btn-outline btn-info'>Log In To Add  Review</Link>
+
+                        </>
+                }
             </div>
         </div>
     );

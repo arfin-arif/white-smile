@@ -18,7 +18,7 @@ const WhyMe = () => {
                                 <FaSyringe className='text-9xl pr-2'></FaSyringe>
                                 <div>
                                     Dental Anxiety
-                                    <p> We offer a range of services to help you overcome fear and finally enjoy good oral health.</p>
+                                    <p> I offer a range of services to help you overcome fear and finally enjoy good oral health.</p>
                                 </div>
                             </div>
 
@@ -37,7 +37,7 @@ const WhyMe = () => {
                                 <FaStethoscope className='text-9xl pr-2'></FaStethoscope>
                                 <div>
                                     Missing Teeth
-                                    <p>We can restore your smile, as well as speaking & eating ability with advanced prosthetics. </p>
+                                    <p>I can restore your smile, as Ill as speaking & eating ability with advanced prosthetics. </p>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@ const WhyMe = () => {
                                 <FaWheelchair className='text-9xl pr-2'></FaWheelchair>
                                 <div>
                                     Periodontal Disease
-                                    <p> We offer a variety of periodontal treatments, customized for your specific health needs.</p>
+                                    <p> I offer a variety of periodontal treatments, customized for your specific health needs.</p>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +56,7 @@ const WhyMe = () => {
 
 
                 <div className=' w-3/5'>
-                    <img src={img} alt="" className=' w-full' />
+                    <img src={img} alt="" className=' w-full rounded' />
                 </div>
 
             </div>
