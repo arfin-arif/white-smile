@@ -9,7 +9,7 @@ const ReviewSection = ({ service }) => {
     const { title, image, price, _id, details, ratings, payment_options, } = service;
     const { user } = useContext(AuthContext);
     useEffect(() => {
-        fetch(`http://localhost:5000/service-review?serviceName=${title}`)
+        fetch(`https://white-smile-server.vercel.app/service-review?serviceName=${title}`)
             .then(res => res.json())
             .then(data => setReviews(data))
 

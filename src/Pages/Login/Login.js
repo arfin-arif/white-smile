@@ -36,7 +36,7 @@ const Login = () => {
                 }
                 console.log(currentUser)
                 //  JWT token 
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://white-smile-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -115,8 +115,10 @@ const Login = () => {
                             <p>New to White Smile <Link to='/register' className='text-blue-400'>Register</Link> </p>
                             <hr />
                             OR
-                            <p className='text-2xl'>Log In Using</p>
-                            <FaGoogle onClick={handleGoogleSigIn} className='text-4xl'></FaGoogle>
+                            <p className='text-xl font-mono'>Log In Using</p>
+                            <div className='flex justify-center mt-2'>
+                                <FaGoogle onClick={handleGoogleSigIn} className='text-4xl'></FaGoogle>
+                            </div>
                         </div>
 
                     </form>

@@ -20,17 +20,17 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/services')
+                loader: () => fetch('https://white-smile-server.vercel.app/services')
             },
             {
                 path: '/services',
                 element: <Services></Services>,
-                loader: () => fetch('http://localhost:5000/all-services')
+                loader: () => fetch('https://white-smile-server.vercel.app/all-services')
             },
             {
                 path: '/services/:id',
                 element: <ServiceDetailsPage></ServiceDetailsPage>,
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({ params }) => fetch(`https://white-smile-server.vercel.app/services/${params.id}`)
             },
             {
                 path: '/login',
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
             {
                 path: '/reviews/:id',
                 element: <PrivateRoutes><Reviews /></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({ params }) => fetch(`https://white-smile-server.vercel.app/services/${params.id}`)
             },
             {
                 path: '/reviews/my-reviews',
@@ -59,8 +59,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/update-review/:id',
-                element: <PrivateRoutes> <UpdateReview></UpdateReview></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/reviews/${params.id}`)
+                element: <UpdateReview></UpdateReview>,
+                loader: ({ params }) => fetch(`https://white-smile-server.vercel.app/reviews/${params.id}`)
             },
         ]
 
